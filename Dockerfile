@@ -14,11 +14,11 @@ RUN apt-get update \
     && apt-get install -y netcat \
     && apt-get -y autoclean
 
-# install nvm
+# Install nvm
 # https://github.com/creationix/nvm#install-script
 RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh | bash
 
-# install node and npm
+# Install node and npm
 
 RUN source $NVM_DIR/nvm.sh \
     && nvm install $NODE_VERSION \
@@ -28,8 +28,14 @@ RUN source $NVM_DIR/nvm.sh \
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
-## Install Google Chrome
+# Install Google Chrome
 RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
 RUN apt-get -yqq update
 RUN apt-get -yqq install google-chrome-stable
+
+# Install Firefox
+RUN curl http://mozilla.debian.net/archive.asc | apt-key add -
+RUN echo "deb http://security.debian.org/ stretch/updates main" >> /etc/apt/sources.list.d/debian-mozilla.list
+RUN apt-get -yqq update
+RUN apt-get -yqq install firefox-esr
