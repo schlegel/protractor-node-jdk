@@ -39,3 +39,9 @@ RUN curl http://mozilla.debian.net/archive.asc | apt-key add -
 RUN echo "deb http://security.debian.org/ stretch/updates main" >> /etc/apt/sources.list.d/debian-mozilla.list
 RUN apt-get -yqq update
 RUN apt-get -yqq install firefox-esr
+
+# Verify
+RUN node -v
+RUN npm -v
+RUN google-chrome --version
+RUN firefox --version
