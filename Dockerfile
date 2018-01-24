@@ -12,6 +12,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN apt-get update \
     && apt-get install -y curl \
     && apt-get install -y netcat \
+    && apt-get install -y nginx \
     && apt-get -y autoclean
 
 # Install nvm
@@ -40,8 +41,12 @@ RUN echo "deb http://security.debian.org/ stretch/updates main" >> /etc/apt/sour
 RUN apt-get -yqq update
 RUN apt-get -yqq install firefox-esr
 
+# Install NGINX
+
+
 # Verify
 RUN node -v
 RUN npm -v
 RUN google-chrome --version
 RUN firefox --version
+RUN service nginx status
