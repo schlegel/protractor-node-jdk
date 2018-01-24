@@ -41,12 +41,8 @@ RUN echo "deb http://security.debian.org/ stretch/updates main" >> /etc/apt/sour
 RUN apt-get -yqq update
 RUN apt-get -yqq install firefox-esr
 
-# Install NGINX
-
-
 # Verify
 RUN node -v
 RUN npm -v
 RUN google-chrome --version
 RUN firefox --version
-RUN service nginx status
