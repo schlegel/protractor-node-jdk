@@ -44,7 +44,7 @@ RUN apt-get -yqq install firefox-esr
 # Update to newest firefox
 RUN cd ~
 RUN pwd
-RUN curl --output FirefoxSetup.tar.bz2 https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US
+RUN curl -o FirefoxSetup.tar.bz2 https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US
 RUN mkdir /opt/firefox
 RUN ls -al
 RUN tar xjf FirefoxSetup.tar.bz2 -C /opt/firefox/
