@@ -39,7 +39,15 @@ RUN apt-get -yqq install google-chrome-stable
 RUN curl http://mozilla.debian.net/archive.asc | apt-key add -
 RUN echo "deb http://security.debian.org/ stretch/updates main" >> /etc/apt/sources.list.d/debian-mozilla.list
 RUN apt-get -yqq update
-RUN apt-get -yqq install firefox
+RUN apt-get -yqq install firefox-esr
+
+# Update to newest firefox
+RUN cd ~
+RUN curl  --silent --output FirefoxSetup.tar.bz2 https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US
+RUN mkdir /opt/firefox
+RUN tar xjf ~/FirefoxSetup.tar.bz2 -C /opt/firefox/
+RUN mv /usr/lib/firefox-esr/firefox-esr /usr/lib/firefox-esr/firefox-esr_orig
+RUN ln -s /opt/firefox/firefox/firefox /usr/lib/firefox-esr/firefox-esr
 
 # Verify
 RUN node -v
