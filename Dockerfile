@@ -44,7 +44,7 @@ RUN apt-get -yqq install firefox-esr
 # Update to newest firefox
 RUN mkdir /opt/firefox
 RUN ls -al /opt/firefox
-RUN curl -o /opt/firefox/FirefoxSetup.tar.bz2 https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US
+RUN curl -o /opt/firefox/FirefoxSetup.tar.bz2 "https://download-installer.cdn.mozilla.net/pub/firefox/releases/55.0.1/linux-x86_64/en-US/firefox-55.0.1.tar.bz2"
 RUN ls -al /opt/firefox
 RUN tar xjf /opt/firefox/FirefoxSetup.tar.bz2 -C /opt/firefox/
 RUN ls -al /opt/firefox
